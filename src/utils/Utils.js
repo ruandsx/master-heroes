@@ -1,5 +1,6 @@
-export const cardOptions = (heroes = []) =>{
+export const cardOptions =  (heroes = []) =>{
   let heroes2 = shuffle(heroes);
+  //let toRemove = [];
   heroes2.map((hero, index)=>{
     let options = [
       hero.name,
@@ -8,13 +9,18 @@ export const cardOptions = (heroes = []) =>{
     ];
 
     hero.cardOptions = shuffle(options);
+
+    //test if image is broken
+     //toRemove.push(index);
+    //getImageOrFallback(hero.image.url,true)
+   
     
   })
-
+  //removeFromArray(toRemove, heroes2)
   return heroes2;
 }
 
-function shuffle(array) {
+const shuffle = (array) => {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
   while (0 !== currentIndex) {
@@ -26,6 +32,20 @@ function shuffle(array) {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
-
   return array;
 }
+
+
+const removeFromArray = (indexes, array) => {
+  for (let i = 0; i < indexes.length; i++) {
+    array.splice(indexes[i])
+  }
+}
+
+
+ const getImageOrFallback = (path, fallback) => {
+    const img = new Image();
+    img.src = path;
+    img.onload = () => {};
+    img.onerror = () => console.log("ferrou");
+};

@@ -35,7 +35,7 @@ const Home = () => {
     <Container 
      >
       <Grid style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} columns={4}>
-        {heroes !=undefined ? heroes.map((hero, index)=>{
+        {heroes !==undefined ? heroes.map((hero, index)=>{
           return (
           <Grid.Column key={index}> 
             <HeroCard key={hero.id} image={hero.image.url} name={hero.name} options={hero.cardOptions} alignment={hero.biography.alignment}/> 
