@@ -17,7 +17,7 @@ export const cardOptions =  (heroes = []) =>{
     return null;
   })
   //removeFromArray(toRemove, heroes2)
-  const numberOfCards = 1;
+  const numberOfCards = 10;
   localStorage.setItem('heroes', JSON.stringify(heroes2));
   localStorage.setItem('numberOfHeroes', heroes2.length);
   localStorage.setItem('score', 0);
