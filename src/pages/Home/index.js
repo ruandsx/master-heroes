@@ -1,13 +1,13 @@
 import React , { useState, useEffect } from 'react';
 
 //components
-import {Container, Grid} from 'semantic-ui-react';
+import {Container} from 'semantic-ui-react';
 import HeroCard from '../../components/HeroCard';
 
 //styles
 
 //api
-import api from '../../utils/api';
+//import api from '../../utils/api';
 import superagent from 'superagent';
 
 // utils
@@ -17,13 +17,17 @@ import {cardOptions} from '../../utils/Utils'
 const Home = () => {
 
   var [heroes, setHeroes] = useState([]);
+
+  var [actualCards, setActualCards] = useState(0);
+
+  var [score, setScore] = useState(0);
     
   useEffect(()=>{
     getHeroes();
   }, [])
   
-  async function getHeroes(){
-    superagent.get(`https://www.superheroapi.com/api.php/2634491169970691/search/a`)
+   const getHeroes = ()=>{
+    superagent.get(`https://www.superheroapi.com/api.php/2634491169970691/search/%20`)
     .then(res => {
       setHeroes(cardOptions(res.body.results));
     })
@@ -32,17 +36,15 @@ const Home = () => {
   return (
   <Container fluid >
 
-    <Container 
-     >
-      <Grid style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} columns={4}>
+    <Container style={{marginTop: "10px", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         {heroes !==undefined ? heroes.map((hero, index)=>{
+          if(index < localStorage.getItem('numberOfCards'))
           return (
-          <Grid.Column key={index}> 
-            <HeroCard key={hero.id} image={hero.image.url} name={hero.name} options={hero.cardOptions} alignment={hero.biography.alignment}/> 
-          </Grid.Column>
+            <HeroCard key={hero.id} id={hero.id} image={hero.image.url} name={hero.name} options={hero.cardOptions} alignment={hero.biography.alignment}/> 
           )
-        }) : null}
-      </Grid>
+        })
+         : null}
+
     </Container>
   </Container>
 

@@ -14,9 +14,17 @@ export const cardOptions =  (heroes = []) =>{
      //toRemove.push(index);
     //getImageOrFallback(hero.image.url,true)
    
-    
+    return null;
   })
   //removeFromArray(toRemove, heroes2)
+  const numberOfCards = 1;
+  localStorage.setItem('heroes', JSON.stringify(heroes2));
+  localStorage.setItem('numberOfHeroes', heroes2.length);
+  localStorage.setItem('score', 0);
+  localStorage.setItem('numberOfCards', numberOfCards);
+  localStorage.setItem('actualCards', numberOfCards);
+
+
   return heroes2;
 }
 
