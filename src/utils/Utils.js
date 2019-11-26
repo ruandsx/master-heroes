@@ -1,3 +1,4 @@
+
 export const cardOptions =  (heroes = []) =>{
   let heroes2 = shuffle(heroes);
   //let toRemove = [];
@@ -101,10 +102,11 @@ export const startTimer = (maxTime) =>{
       return;
     }*/
 
-    if(localStorage.getItem('actualCards') == 0){
+    if(parseInt(localStorage.getItem('actualCards')) === 0){
       return;
     }
 
   }, 1000)
 
 }
+

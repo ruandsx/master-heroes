@@ -8,14 +8,14 @@ const HeroCard = (props) => {
 
   const chooseOption = (option) =>{
 
-    let score = localStorage.getItem('score');
-    let actualCards = localStorage.getItem('actualCards');
+    let score = parseInt(localStorage.getItem('score'));
+    let actualCards = parseInt(localStorage.getItem('actualCards'));
 
     let correct = false;
 
     if(option === props.name){
       correct = true;
-      localStorage.setItem('score', ++score);
+      localStorage.setItem('score', score+20);
     }else{
       correct = false;
     }

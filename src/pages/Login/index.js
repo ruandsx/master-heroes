@@ -18,7 +18,7 @@ const Login = () => {
 
 
   return (
-  <Container style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', width: "100vw", height: "100vh", backgroundRepeat: "round", backgroundImage: "url(https://wallpaperplay.com/walls/full/b/e/c/126266.jpg)"}} fluid>
+  <Container style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', width: "100vw", minHeight:"100vh", backgroundRepeat: "round", backgroundImage: "url(https://wallpaperplay.com/walls/full/b/e/c/126266.jpg)"}} fluid>
 
     <Container style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center'}}>
       
@@ -28,7 +28,7 @@ const Login = () => {
             <Icon style={{marginBottom: "5px"}} name='vnv' />
               <p style={{marginTop: "-20px"}}>Welcome to Master Heroes</p>
             <Header.Subheader>
-              Here you can play and learn more about heroes
+            Here you can play and learn more about heroes<p>(and villains too)</p>
             </Header.Subheader>
           </Header>
         </Grid>

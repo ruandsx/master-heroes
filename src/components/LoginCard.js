@@ -1,16 +1,47 @@
 import React, { useState } from 'react'
 import { Card, Input, Button, Icon } from 'semantic-ui-react'
 
+import {db} from '../services/firebase';
+
+
 const LoginCard = (props) => {
 
 
   const login = (name) =>{
+    
     if(name === ""){
-      alert("please fill the user field");
+      alert("please fill the username field");
       return;
+    }else{
+
+      let verified = 0;
+
+      db.ref(`users`).orderByChild('name').equalTo(name).on("value", function(snapshot) {
+        console.log(snapshot.val());
+        if(verified === 0 && snapshot.val()!==null){
+            alert(`user ${name} already exists on database \n logging and going to leaderboard...`);
+            localStorage.setItem('actualCards', 0);
+            localStorage.setItem('user', name);
+            window.location.replace("/leaderboard");
+            return;
+        }else{
+          console.log("n existe");
+          verified = 1;
+            db.ref('users/'+name).set({
+              score: 0,
+              percentage: 0,
+              time: 0,
+              name: name
+            })
+            localStorage.setItem('user', name);
+            window.location.replace("/");
+            return;
+        }
+      });
+      
+
     }
-    localStorage.setItem('user', name);
-    window.location.replace("/");
+
   }
 
   var [user, setUser] = useState('');
