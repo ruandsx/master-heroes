@@ -59,7 +59,7 @@ const removeFromArray = (indexes, array) => {
     const img = new Image();
     img.src = path;
     img.onload = () => {};
-    img.onerror = () => console.log("ferrou");
+    img.onerror = () => {};
 };
 
 

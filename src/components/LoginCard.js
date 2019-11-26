@@ -17,15 +17,13 @@ const LoginCard = (props) => {
       let verified = 0;
 
       db.ref(`users`).orderByChild('name').equalTo(name).on("value", function(snapshot) {
-        console.log(snapshot.val());
         if(verified === 0 && snapshot.val()!==null){
-            alert(`user ${name} already exists on database \n logging and going to leaderboard...`);
+            alert(`username ${name} already exists on database \n logging and going to leaderboard...`);
             localStorage.setItem('actualCards', 0);
             localStorage.setItem('user', name);
             window.location.replace("/leaderboard");
             return;
         }else{
-          console.log("n existe");
           verified = 1;
             db.ref('users/'+name).set({
               score: 0,
@@ -54,7 +52,7 @@ const LoginCard = (props) => {
       <Card.Description style={{marginTop: "4vh"}} >
         <Input iconPosition='left' placeholder='username'>
           <Icon name='at' />
-          <input onChange={()=>setUser(document.querySelector("input").value)} />
+          <input onChange={()=>setUser(document.querySelector("input").value)} onKeyDown={(e)=>{if(e.key === 'Enter')login(user)}}/>
         </Input>
 
         <Button color='green' animated style={{marginTop: "4vh"}} onClick={()=>login(user)} >
