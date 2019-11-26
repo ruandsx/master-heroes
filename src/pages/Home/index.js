@@ -12,10 +12,14 @@ import Login from '../Login'
 import superagent from 'superagent';
 
 // utils
-import {cardOptions, isLogged, getCardsNumber} from '../../utils/Utils'
+import {cardOptions, isAuthenticated, getCardsNumber} from '../../utils/Utils'
 
 
 const Home = () => {
+  
+  if(!isAuthenticated()){
+    window.location.href="/login";
+  };
 
   var [heroes, setHeroes] = useState([]);
 
@@ -24,7 +28,12 @@ const Home = () => {
   var [score, setScore] = useState(0);
     
   useEffect(()=>{
-    getHeroes();
+    if(localStorage.length>1 && parseInt(localStorage.getItem('actualCards'))===0){
+      window.location.href="/leaderboard";
+    }else{
+      getHeroes();
+    }
+    
 
     document.addEventListener('click', ()=>{
       setScore(localStorage.getItem('score'));
@@ -40,11 +49,7 @@ const Home = () => {
     }
 
 
-
-
   return (
-
-    isLogged()?
 
   <Container style={{width: "100vw", height: "100vh",}} fluid >
 
@@ -69,8 +74,7 @@ const Home = () => {
 
     </Container>
   </Container>
-  :
-  <Login/>
+
   );
 }
 

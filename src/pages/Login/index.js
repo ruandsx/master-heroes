@@ -7,10 +7,14 @@ import LoginCard from '../../components/LoginCard';
 //styles
 
 // utils
-import {isLogged} from '../../utils/Utils'
+import {isAuthenticated} from '../../utils/Utils';
 
 
 const Login = () => {
+
+  if(isAuthenticated()){
+    window.location.href="/";
+  };
 
 
   return (

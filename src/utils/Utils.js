@@ -60,7 +60,7 @@ const removeFromArray = (indexes, array) => {
 
 
 
-export const isLogged = () =>{
+export const isAuthenticated = () =>{
     return localStorage.getItem('user')!==undefined && localStorage.getItem('user')!==null && localStorage.getItem('user')!=="undefined" && localStorage.getItem('user')!=="null" ? true : false;
 }
 

@@ -6,7 +6,7 @@ import Login from '../Login';
 
 
 //utils
-import { isLogged } from '../../utils/Utils'
+import { isAuthenticated } from '../../utils/Utils'
 
 //api
 //import api from '../../utils/api';
@@ -14,6 +14,11 @@ import superagent from 'superagent';
 
 
 const LeaderBoard = () => {
+
+  if(!isAuthenticated()){
+    window.location.href="/login";
+  };
+
 
   var [score, setScore] = useState(localStorage.getItem('score'));
   
@@ -24,9 +29,10 @@ const LeaderBoard = () => {
     })
   },[])
 
+
+
   return (
 
-    isLogged()?
 
   <Container style={{width: "100vw", height: "100vh",}} fluid >
 
@@ -106,9 +112,7 @@ const LeaderBoard = () => {
 
     </Container>
   </Container>
-  :
-  <Login/>
-  );
+  )
 }
 
 export default LeaderBoard;
