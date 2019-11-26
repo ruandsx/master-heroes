@@ -1,7 +1,7 @@
 import React , { useState, useEffect } from 'react';
 
 //components
-import {Container, Grid, Header, Icon} from 'semantic-ui-react';
+import {Container, Grid, Header, Button, Icon} from 'semantic-ui-react';
 import HeroCard from '../../components/HeroCard';
 import Login from '../Login'
 
@@ -12,7 +12,7 @@ import Login from '../Login'
 import superagent from 'superagent';
 
 // utils
-import {cardOptions, isAuthenticated, getCardsNumber} from '../../utils/Utils'
+import {cardOptions, isAuthenticated, getCardsNumber, logout} from '../../utils/Utils'
 
 
 const Home = () => {
@@ -53,7 +53,7 @@ const Home = () => {
 
   <Container style={{width: "100vw", height: "100vh",}} fluid >
 
-    <Container style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <Container style={{display: 'flex', justifyContent: 'center', flexDirection: "column", alignItems: 'center'}}>
         
         <Grid columns={1}>
           <Header as='h2' icon>
@@ -71,6 +71,12 @@ const Home = () => {
          : null}
 
          {parseInt(actualCards) <= 0 ? window.location.href="/leaderboard" : null}
+
+
+      <Button style={{position: "absolute", top: 580, margin: 0}} onClick={()=>logout()} animated='fade'>
+        <Button.Content visible>Exit</Button.Content>
+        <Button.Content hidden><Icon name='sign-out'/></Button.Content>
+      </Button>
 
     </Container>
   </Container>

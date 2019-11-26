@@ -20,7 +20,7 @@ const Login = () => {
   return (
   <Container fluid >
 
-    <Container style={{marginTop: "40px", display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center'}}>
+    <Container style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center'}}>
       <Grid columns={1}>
         <Header as='h2' icon>
           <Icon style={{marginBottom: "5px"}} name='vnv' />

@@ -48,14 +48,11 @@ const HeroCard = (props) => {
   }
 
   return(
-  <Card id={props.id} style={{position: "absolute", top: 110, margin: 0, height: "500px", textAlign: "center"}}>
+  <Card id={props.id} style={{position: "absolute", top: 100, margin: 0, height: "520px", textAlign: "center"}}>
     <Image fluid src={image} onError={imageError} style={{height: "300px"}}/>
     <Card.Content>
       <Card.Header>Who is this character?</Card.Header>
-     {/* <Card.Meta>
-        <span className='date'>{props.alignment}</span>
-      </Card.Meta>
-     */}
+
       <Card.Description style={{marginTop: "15px"}}>
 
         {props.options!==undefined?props.options.map((option, index)=>{

@@ -80,3 +80,8 @@ export const fadeOut = (element) => {
 export const getCardsNumber = () =>{
   return localStorage.getItem('actualCards');
 }
+
+export const logout = () =>{
+  localStorage.clear();
+  window.location.href="/login";
+}

@@ -1,12 +1,11 @@
 import React , { useState, useEffect } from 'react';
 
 //components
-import {Container, Grid, Header, Icon, Table, Image} from 'semantic-ui-react';
-import Login from '../Login';
+import {Container, Grid, Header, Icon, Table, Image, Button} from 'semantic-ui-react';
 
 
 //utils
-import { isAuthenticated } from '../../utils/Utils'
+import { isAuthenticated, logout } from '../../utils/Utils'
 
 //api
 //import api from '../../utils/api';
@@ -48,14 +47,10 @@ const LeaderBoard = () => {
   
   useEffect(()=>{
   
-
   },[])
 
-
-
+  
   return (
-
-
   <Container style={{width: "100vw", height: "100vh",}} fluid >
 
     <Container style={{display: 'flex', justifyContent: 'center', flexDirection: "column", alignItems: 'center'}}>
@@ -72,7 +67,7 @@ const LeaderBoard = () => {
 
           
 
-          <Table style={{marginTop: "100px"}} basic='very' celled collapsing>
+          <Table style={{marginTop: "70px"}} basic='very' celled collapsing>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Username</Table.HeaderCell>
@@ -99,7 +94,11 @@ const LeaderBoard = () => {
             </Table.Body>
           </Table>
         
-        
+      <Button onClick={()=>logout()} animated='fade'>
+        <Button.Content visible>Exit</Button.Content>
+        <Button.Content hidden><Icon name='sign-out'/></Button.Content>
+      </Button>
+
 
     </Container>
   </Container>
