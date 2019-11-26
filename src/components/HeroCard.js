@@ -1,32 +1,39 @@
 import React, { useState } from 'react'
 import { Card, Image, Button } from 'semantic-ui-react'
 
-const HeroCard = (props) => {
+//utils
+import { fadeOut } from '../utils/Utils'
 
+const HeroCard = (props) => {
 
   const chooseOption = (option) =>{
 
     let score = localStorage.getItem('score');
     let actualCards = localStorage.getItem('actualCards');
 
+    let correct = false;
 
     if(option === props.name){
-      alert("Acertou");
+      correct = true;
       localStorage.setItem('score', ++score);
     }else{
-      alert("Errou");
+      correct = false;
     }
 
     var cards = document.querySelectorAll(".ui.card");
     for(let i=0; i<cards.length; i++){
-      if(cards[i].id == props.id){
-        cards[i].parentNode.removeChild(cards[i]);
+      if(cards[i].id === props.id){
+
+        cards[i].style.backgroundColor=`${correct?'green':'red'}`;
+
+        //fadeOut and delete card from DOM
+        setTimeout(fadeOut(cards[i]), 500)
+        setTimeout(()=>cards[i].parentNode.removeChild(cards[i]), 1000);
       }
     }
 
     localStorage.setItem('actualCards', --actualCards);
 
-   
   }
 
   var [image, setImage] = useState(props.image);
@@ -36,14 +43,15 @@ const HeroCard = (props) => {
   }
 
   return(
-  <Card id={props.id} style={{position: "absolute", top: 0, height: "500px"}}>
+  <Card id={props.id} style={{position: "absolute", top: 110, margin: 0, height: "500px", textAlign: "center"}}>
     <Image fluid src={image} onError={imageError} style={{height: "300px"}}/>
     <Card.Content>
       <Card.Header>Who is this character?</Card.Header>
-      <Card.Meta>
+     {/* <Card.Meta>
         <span className='date'>{props.alignment}</span>
       </Card.Meta>
-      <Card.Description>
+     */}
+      <Card.Description style={{marginTop: "15px"}}>
 
         {props.options!==undefined?props.options.map((option, index)=>{
         return <Button key={index} onClick={()=>chooseOption(option)} fluid style={{marginTop: "5px"}}>{option}</Button>
@@ -55,4 +63,4 @@ const HeroCard = (props) => {
   )
 }
 
-export default HeroCard
+export default HeroCard;

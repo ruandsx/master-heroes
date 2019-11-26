@@ -57,3 +57,26 @@ const removeFromArray = (indexes, array) => {
     img.onload = () => {};
     img.onerror = () => console.log("ferrou");
 };
+
+
+
+export const isLogged = () =>{
+    return localStorage.getItem('user')!==undefined && localStorage.getItem('user')!==null && localStorage.getItem('user')!=="undefined" && localStorage.getItem('user')!=="null" ? true : false;
+}
+
+export const fadeOut = (element) => {
+  var op = 1;  // initial opacity
+  var timer = setInterval(function () {
+      if (op <= 0.1){
+          clearInterval(timer);
+          element.style.display = 'none';
+      }
+      element.style.opacity = op;
+      element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+      op -= op * 0.1;
+  }, 50);
+}
+
+export const getCardsNumber = () =>{
+  return localStorage.getItem('actualCards');
+}
