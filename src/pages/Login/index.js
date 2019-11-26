@@ -23,10 +23,10 @@ const Login = () => {
     <Container style={{marginTop: "40px", display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center'}}>
       <Grid columns={1}>
         <Header as='h2' icon>
-          <Icon name='vnv' />
-          Welcome to Master Heroes
+          <Icon style={{marginBottom: "5px"}} name='vnv' />
+            <p style={{marginTop: "-20px"}}>Welcome to Master Heroes</p>
           <Header.Subheader>
-            Here you can play and learn about the heroes universe
+            Here you can play and learn more about heroes
           </Header.Subheader>
         </Header>
       </Grid>

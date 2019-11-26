@@ -13,6 +13,13 @@ import { isAuthenticated } from '../../utils/Utils'
 import superagent from 'superagent';
 
 
+const avatars = [
+  "https://react.semantic-ui.com/images/avatar/small/lena.png",
+  "https://react.semantic-ui.com/images/avatar/small/matthew.png",
+  "https://react.semantic-ui.com/images/avatar/small/lindsay.png",
+  "https://react.semantic-ui.com/images/avatar/small/mark.png",
+]
+
 const LeaderBoard = () => {
 
   if(!isAuthenticated()){
@@ -21,12 +28,27 @@ const LeaderBoard = () => {
 
 
   var [score, setScore] = useState(localStorage.getItem('score'));
+  var [user, setUser] = useState(localStorage.getItem('user'));
+
+  var [users, setUsers] = useState([
+    {name: "laura", score: 15},
+    {name: "example", score: 15},
+    {name: "paul", score: 13},
+    {name: "john", score: 10},
+    {name: "maria", score: 11},
+    {name: user, score}
+  ].sort((a, b)=>{
+    if(a.score>b.score){
+      return -1;
+    }else{
+      return 1;
+    }
+
+  }));
   
   useEffect(()=>{
+  
 
-    document.addEventListener('load', ()=>{
-      setScore(localStorage.getItem('score'));
-    })
   },[])
 
 
@@ -48,6 +70,8 @@ const LeaderBoard = () => {
           </Header>
         </Grid>
 
+          
+
           <Table style={{marginTop: "100px"}} basic='very' celled collapsing>
             <Table.Header>
               <Table.Row>
@@ -56,55 +80,22 @@ const LeaderBoard = () => {
               </Table.Row>
             </Table.Header>
 
+
             <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h4' image>
-                    <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' />
-                    <Header.Content>
-                      Lena
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>22</Table.Cell>
-              </Table.Row>
-             
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h4' image>
-                    <Image src='https://react.semantic-ui.com/images/avatar/small/matthew.png' rounded size='mini' />
-                    <Header.Content>
-                      Matthew
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>15</Table.Cell>
-              </Table.Row>
-              
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h4' image>
-                    <Image src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' rounded size='mini' />
-                    <Header.Content>
-                      Lindsay
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>12</Table.Cell>
-              </Table.Row>
-              
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h4' image>
-                    <Image src='https://react.semantic-ui.com/images/avatar/small/mark.png' rounded size='mini' />
-                    <Header.Content>
-                      Mark
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>11</Table.Cell>
-              
-              </Table.Row>
+              {users.length>0?users.map((usr, index)=>{
+                return(
+                <Table.Row key={index} style={usr.name === localStorage.getItem('user') ? {backgroundColor: "palegreen"} : null}>
+                  <Table.Cell>
+                    <Header as='h4' image>
+                      <Image src={avatars[Math.floor(Math.random() * avatars.length)]} rounded size='mini' />
+                      <Header.Content>
+                        {usr.name}
+                      </Header.Content>
+                    </Header>
+                  </Table.Cell>
+                  <Table.Cell>{usr.score}</Table.Cell>
+                </Table.Row>);
+              }):null}
             </Table.Body>
           </Table>
         

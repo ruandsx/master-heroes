@@ -27,8 +27,13 @@ const HeroCard = (props) => {
         cards[i].style.backgroundColor=`${correct?'green':'red'}`;
 
         //fadeOut and delete card from DOM
+
+        const div = document.querySelector("#root");
+        div.style.pointerEvents= "none";
+
         setTimeout(fadeOut(cards[i]), 500)
         setTimeout(()=>cards[i].parentNode.removeChild(cards[i]), 1000);
+        setTimeout(()=>div.style.pointerEvents= "all", 1000);
       }
     }
 

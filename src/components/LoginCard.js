@@ -5,7 +5,10 @@ const LoginCard = (props) => {
 
 
   const login = (name) =>{
-
+    if(name === ""){
+      alert("please fill the user field");
+      return;
+    }
     localStorage.setItem('user', name);
     window.location.href = "/";
   }
