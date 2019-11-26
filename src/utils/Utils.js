@@ -18,12 +18,15 @@ export const cardOptions =  (heroes = []) =>{
   })
   //removeFromArray(toRemove, heroes2)
   const numberOfCards = 15;
+  const maxTime = 30;
   localStorage.setItem('heroes', JSON.stringify(heroes2));
   localStorage.setItem('numberOfHeroes', heroes2.length);
   localStorage.setItem('score', 0);
   localStorage.setItem('numberOfCards', numberOfCards);
   localStorage.setItem('actualCards', numberOfCards);
+  localStorage.setItem('maxTime', maxTime);
 
+  startTimer(maxTime);
 
   return heroes2;
 }
@@ -84,4 +87,24 @@ export const getCardsNumber = () =>{
 export const logout = () =>{
   localStorage.clear();
   window.location.href="/login";
+}
+
+export const startTimer = (maxTime) =>{
+  let time = 0;
+  
+  setInterval(() =>{
+    localStorage.setItem('time', time);
+    time++;
+
+    /*if(time>=maxTime){
+      localStorage.setItem('actualCards', 0);
+      return;
+    }*/
+
+    if(localStorage.getItem('actualCards') == 0){
+      return;
+    }
+
+  }, 1000)
+
 }

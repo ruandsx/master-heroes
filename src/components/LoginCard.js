@@ -10,14 +10,14 @@ const LoginCard = (props) => {
       return;
     }
     localStorage.setItem('user', name);
-    window.location.href = "/";
+    window.location.replace("/");
   }
 
   var [user, setUser] = useState('');
 
 
   return(
-  <Card id={props.id} style={{height: "200px", textAlign: "center", marginTop: "4vh"}}>
+  <Card id={props.id} style={{height: "200px", textAlign: "center", }}>
     <Card.Content>
       <Card.Header>Sign in</Card.Header>
       <Card.Description style={{marginTop: "4vh"}} >
@@ -26,7 +26,7 @@ const LoginCard = (props) => {
           <input onChange={()=>setUser(document.querySelector("input").value)} />
         </Input>
 
-        <Button animated style={{marginTop: "4vh"}} onClick={()=>login(user)} >
+        <Button color='green' animated style={{marginTop: "4vh"}} onClick={()=>login(user)} >
           <Button.Content visible>Play</Button.Content>
           <Button.Content hidden>
             <Icon name='play' />

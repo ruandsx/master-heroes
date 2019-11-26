@@ -1,7 +1,7 @@
 import React , { useState, useEffect } from 'react';
 
 //components
-import {Container, Grid, Header, Button, Icon} from 'semantic-ui-react';
+import {Container, Grid, Header, Button, Segment, Icon, Loader} from 'semantic-ui-react';
 import HeroCard from '../../components/HeroCard';
 import Login from '../Login'
 
@@ -25,18 +25,27 @@ const Home = () => {
 
   var [actualCards, setActualCards] = useState(15);
 
-  var [score, setScore] = useState(0);
+  var [time, setTime] = useState(0);
     
   useEffect(()=>{
     if(localStorage.length>1 && parseInt(localStorage.getItem('actualCards'))===0){
-      window.location.href="/leaderboard";
+      window.location.replace("/leaderboard");
     }else{
       getHeroes();
     }
     
+    setInterval(() =>{
+      setTime(parseInt(localStorage.getItem('time')));
+
+       /* if(time>=localStorage.getItem('maxTime')){
+            localStorage.setItem('actualCards', 0);
+            setActualCards(0);
+            window.location.replace("/leaderboard");
+          } 
+        */
+    }, 1000)
 
     document.addEventListener('click', ()=>{
-      setScore(localStorage.getItem('score'));
       setActualCards(getCardsNumber());
     })
   },[])
@@ -51,34 +60,43 @@ const Home = () => {
 
   return (
 
-  <Container style={{width: "100vw", height: "100vh",}} fluid >
-
-    <Container style={{display: 'flex', justifyContent: 'center', flexDirection: "column", alignItems: 'center'}}>
+  <Container style={{width: "100vw", height: "100vh", backgroundRepeat: "round", backgroundImage: "url(https://wallpaperplay.com/walls/full/e/4/5/126269.jpg)"}} fluid >
+      <Container style={{display: 'flex', justifyContent: 'center', flexDirection: "column", alignItems: 'center'}}>
         
-        <Grid columns={1}>
-          <Header as='h2' icon>
-            <Icon style={{marginBottom: "5px"}} name='vnv' />
-            <p style={{marginTop: "-20px"}}>Master Heroes</p>
-          </Header>
-        </Grid>
-        
-        {heroes !==undefined ? heroes.map((hero, index)=>{
-          if(index < localStorage.getItem('numberOfCards'))
-          return (
-            <HeroCard key={hero.id} id={hero.id} image={hero.image.url} name={hero.name} options={hero.cardOptions} alignment={hero.biography.alignment}/> 
-          )
-        })
-         : null}
+      <Segment style={{width: "290px", display: 'flex', justifyContent: 'center', flexDirection: "column", alignItems: 'center'}}>
 
-         {parseInt(actualCards) <= 0 ? window.location.href="/leaderboard" : null}
+          <Grid columns={1}>
+            <Header as='h2' icon>
+              <Icon style={{marginTop: "-15px", marginBottom: "5px"}} name='vnv' />
+              <p style={{marginTop: "-20px"}}>Master Heroes</p>
+            </Header>
+          </Grid>
+          
+          {heroes !==undefined ? heroes.map((hero, index)=>{
+            if(index < localStorage.getItem('numberOfCards'))
+            return (
+              <HeroCard key={hero.id} id={hero.id} image={hero.image.url} name={hero.name} options={hero.cardOptions} alignment={hero.biography.alignment}/> 
+            )
+          })
+          : <Loader inline='centered' />}
+
+          {parseInt(actualCards) <= 0 ?  window.location.replace("/leaderboard") : null}
+
+        <p style={{marginTop: "-4px"}}>{time > 0 ? parseInt(time/60)+':'+time%60 : null}</p>
 
 
-      <Button style={{position: "absolute", top: 580, margin: 0}} onClick={()=>logout()} animated='fade'>
-        <Button.Content visible>Exit</Button.Content>
-        <Button.Content hidden><Icon name='sign-out'/></Button.Content>
-      </Button>
+        <Button color='blue' style={{position: "absolute", left: 150, top: 580, margin: 0}} onClick={()=>window.location.replace("/leaderboard")} animated='fade'>
+          <Button.Content visible>LeaderBoard</Button.Content>
+          <Button.Content hidden><Icon name='numbered list'/></Button.Content>
+        </Button>
+        <Button color='red' style={{position: "absolute", left: 40, top: 580, margin: 0}} onClick={()=>logout()} animated='fade'>
+          <Button.Content visible>Exit</Button.Content>
+          <Button.Content hidden><Icon name='sign-out'/></Button.Content>
+        </Button>
 
-    </Container>
+
+        </Segment>
+      </Container>
   </Container>
 
   );
