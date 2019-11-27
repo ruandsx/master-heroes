@@ -1,68 +1,62 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Master Heroes
 
-In the project directory, you can run:
+## About the project:
+ Master Heroes is a free quiz game about superhero universe, cartoons and more. Test your knowledge, answer correctly in the shortest time, earn points and compete with creatures from all over the multiverse !!!
+  
 
-### `yarn start`
+## How to play?
+
+You can access it directly from your browser at [this link](https://powerful-eyrie-76019.herokuapp.com/), hosted by Heroku.
+
+You will come across a login screen, but don't be scared! It is only for choosing a nice username (as long as it is no longer registered in the database).
+
+After entering, you will have to hit who is the character displayed on the card and if you hit, you accumulate 20 points. After the cards are gone (currently 20), you will be redirected to a leaderboard where you can compare with all other players.
+
+Have a lot of fun! :)
+
+## Installation Guide (for devs and enthusiasts)
+
+To run locally and code by your way:
+
+#### Clone project
+```
+git clone https://github.com/ruandsx/master-heroes.git
+
+cd master-heroes
+```
+
+#### Install dependencies
+```
+npm install
+```
+<p style="text-align: center;">or</p>
+
+```
+yarn install
+```
+
+
+#### Run and test
+```
+npm start
+```
+<p style="text-align: center;">or</p>
+
+```
+yarn start
+```
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000](http://localhost:3000) to view it and play in the browser.
 
 The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You will also see any lint errors in the console.<br/>
+Have fun with the project and feel free to make new features! :)
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To learn about React, check out the [React documentation](https://reactjs.org/).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[SuperHeroesAPI](https://superheroapi.com), used to get all SuperHeroes and Villains data.
