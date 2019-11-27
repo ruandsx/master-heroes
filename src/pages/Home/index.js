@@ -23,7 +23,7 @@ const Home = () => {
 
   var [heroes, setHeroes] = useState([]);
 
-  var [actualCards, setActualCards] = useState(15);
+  var [actualCards, setActualCards] = useState(20);
 
   var [time, setTime] = useState(0);
 

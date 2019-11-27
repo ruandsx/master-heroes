@@ -10,9 +10,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 You can access it directly from your browser at [this link](https://powerful-eyrie-76019.herokuapp.com/), hosted by Heroku.
 
-You will come across a login screen, but don't be scared! It is only for choosing a nice username (as long as it is no longer registered in the database).
+You will come across a login screen, but don't be scared! It is only for choosing a nice username (as long as it is not registered in the database).
 
-After entering, you will have to hit who is the character displayed on the card and if you hit, you accumulate 20 points. After the cards are gone (currently 20), you will be redirected to a leaderboard where you can compare with all other players.
+After entering, you will have to hit who is the character displayed on the card and if you hit, you accumulate 20 points. After the cards are gone (currently 20), you will be redirected to a leaderboard where you can compare yourself with all other players.
 
 Have a lot of fun! :)
 
