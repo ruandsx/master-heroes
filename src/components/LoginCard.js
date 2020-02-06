@@ -25,12 +25,12 @@ const LoginCard = (props) => {
             return;
         }else{
           verified = 1;
-            db.ref('users/'+name).set({
-              score: 0,
-              percentage: 0,
-              time: 0,
-              name: name
-            })
+            //db.ref('users/'+name).set({
+            //  score: 0,
+            //  percentage: 0,
+            //  time: 0,
+            //  name: name
+            //})
             localStorage.setItem('user', name);
             window.location.replace("/");
             return;

@@ -1,7 +1,10 @@
+import superagent from 'superagent';
+
 
 export const cardOptions =  (heroes = []) =>{
   let heroes2 = shuffle(heroes);
   //let toRemove = [];
+  var allheroes = [];
   heroes2.map((hero, index)=>{
     let options = [
       hero.name,
@@ -10,13 +13,75 @@ export const cardOptions =  (heroes = []) =>{
     ];
 
     hero.cardOptions = shuffle(options);
-
+    allheroes.push(hero.id);
     //test if image is broken
      //toRemove.push(index);
     //getImageOrFallback(hero.image.url,true)
-   
     return null;
   })
+
+  superagent.get(`https://www.superheroapi.com/api.php/2634491169970691/search/a`)
+  .then(res => {
+    res.body.results.map((hero, index)=>{
+      if(allheroes.indexOf(hero.id)>-1){
+        
+      } else{
+        heroes.push(hero);
+        allheroes.push(hero.id);
+      }
+    })
+    superagent.get(`https://www.superheroapi.com/api.php/2634491169970691/search/e`)
+    .then(res => {
+      res.body.results.map((hero, index)=>{
+        if(allheroes.indexOf(hero.id)>-1){
+          
+        } else{
+          heroes.push(hero);
+          allheroes.push(hero.id);
+        }
+      })
+      superagent.get(`https://www.superheroapi.com/api.php/2634491169970691/search/i`)
+      .then(res => {
+        res.body.results.map((hero, index)=>{
+          if(allheroes.indexOf(hero.id)>-1){
+            
+          } else{
+            heroes.push(hero);
+            allheroes.push(hero.id);
+          }
+        })
+        superagent.get(`https://www.superheroapi.com/api.php/2634491169970691/search/o`)
+        .then(res => {
+          res.body.results.map((hero, index)=>{
+            if(allheroes.indexOf(hero.id)>-1){
+              
+            } else{
+              heroes.push(hero);
+              allheroes.push(hero.id);
+            }
+          })
+          superagent.get(`https://www.superheroapi.com/api.php/2634491169970691/search/u`)
+          .then(res => {
+            res.body.results.map((hero, index)=>{
+              if(allheroes.indexOf(hero.id)>-1){
+                
+              } else{
+                heroes.push(hero);
+                allheroes.push(hero.id);
+              }
+            })
+            console.log(heroes);
+          })
+        })
+        
+      })
+      
+    })
+    
+  })
+  
+
+
   //removeFromArray(toRemove, heroes2)
   const numberOfCards = 20;
   const maxTime = 30;
