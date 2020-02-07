@@ -1,22 +1,14 @@
 import * as firebase from 'firebase';
 const firebaseConfig = {
-  apiKey: "AIzaSyAWM2UUoLEoPB-n-Y7o9Z6WMxfEzAcEI_Y",
-  authDomain: "master-heroes-650ef.firebaseapp.com",
-  databaseURL: "https://master-heroes-650ef.firebaseio.com",
-  projectId: "master-heroes-650ef",
-  storageBucket: "master-heroes-650ef.appspot.com",
-  messagingSenderId: "118828790344",
-  appId: "1:118828790344:web:b6ed12f73c784c50c15e7d",
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATABASE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.BUCKET,
+  messagingSenderId: process.env.MSG_SENDER_ID,
+  appId: process.env.APP_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
 
 export const db = firebase.database();
-
-/*
-db.ref('users/name').set({
-  score: 0,
-  percentage: 0,
-  time: 0,
-})
-*/
