@@ -12,14 +12,10 @@ import superagent from 'superagent';
 import {db} from '../../services/firebase'
 
 // utils
-import {cardOptions, isAuthenticated, getCardsNumber, logout} from '../../utils/Utils'
+import {cardOptions, getCardsNumber, logout} from '../../utils/Utils'
 
 
 const Home = () => {
-  
-  if(!isAuthenticated()){
-    window.location.href="/login";
-  };
 
   var [heroes, setHeroes] = useState([]);
 

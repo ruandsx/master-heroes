@@ -19,12 +19,6 @@ const avatars = [
 
 const LeaderBoard = () => {
 
-  if(!isAuthenticated()){
-    window.location.replace("/login");
-    ;
-  };
-
-
   var [users, setUsers] = useState([]);
   
   useEffect(()=>{

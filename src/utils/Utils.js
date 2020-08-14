@@ -158,7 +158,7 @@ export const getCardsNumber = () =>{
 
 export const logout = () =>{
   localStorage.clear();
-  window.location.href="/login";
+  window.location.href="/";
 }
 
 export const startTimer = (maxTime) =>{
