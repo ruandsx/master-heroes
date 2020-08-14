@@ -24,21 +24,25 @@ export const cardOptions =  (heroes = []) =>{
   .then(res => {
     res.body.results.map((hero, index)=>{
       if(allheroes.indexOf(hero.id)>-1){
-        
+
       } else{
         heroes.push(hero);
         allheroes.push(hero.id);
       }
+      return false;
+
     })
     superagent.get(`https://www.superheroapi.com/api.php/2634491169970691/search/e`)
     .then(res => {
       res.body.results.map((hero, index)=>{
         if(allheroes.indexOf(hero.id)>-1){
-          
+
         } else{
           heroes.push(hero);
           allheroes.push(hero.id);
         }
+        return false;
+
       })
       superagent.get(`https://www.superheroapi.com/api.php/2634491169970691/search/i`)
       .then(res => {
@@ -49,6 +53,7 @@ export const cardOptions =  (heroes = []) =>{
             heroes.push(hero);
             allheroes.push(hero.id);
           }
+          return false;
         })
         superagent.get(`https://www.superheroapi.com/api.php/2634491169970691/search/o`)
         .then(res => {
@@ -59,6 +64,7 @@ export const cardOptions =  (heroes = []) =>{
               heroes.push(hero);
               allheroes.push(hero.id);
             }
+            return false;
           })
           superagent.get(`https://www.superheroapi.com/api.php/2634491169970691/search/u`)
           .then(res => {
@@ -69,8 +75,8 @@ export const cardOptions =  (heroes = []) =>{
                 heroes.push(hero);
                 allheroes.push(hero.id);
               }
+              return false;
             })
-            console.log(heroes);
           })
         })
         
@@ -113,19 +119,19 @@ const shuffle = (array) => {
 }
 
 
-const removeFromArray = (indexes, array) => {
-  for (let i = 0; i < indexes.length; i++) {
-    array.splice(indexes[i])
-  }
-}
+// const removeFromArray = (indexes, array) => {
+//   for (let i = 0; i < indexes.length; i++) {
+//     array.splice(indexes[i])
+//   }
+// }
 
 
- const getImageOrFallback = (path, fallback) => {
-    const img = new Image();
-    img.src = path;
-    img.onload = () => {};
-    img.onerror = () => {};
-};
+//  const getImageOrFallback = (path, fallback) => {
+//     const img = new Image();
+//     img.src = path;
+//     img.onload = () => {};
+//     img.onerror = () => {};
+// };
 
 
 

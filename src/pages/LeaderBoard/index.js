@@ -25,11 +25,6 @@ const LeaderBoard = () => {
   };
 
 
-  var [score, setScore] = useState(localStorage.getItem('score'));
-  var [user, setUser] = useState(localStorage.getItem('user'));
-  var [time, setTime] = useState(localStorage.getItem('time'));
-
-
   var [users, setUsers] = useState([]);
   
   useEffect(()=>{
@@ -41,20 +36,21 @@ const LeaderBoard = () => {
       });
 
       setUsers(leaderboard.sort((a, b)=>{
-                  if(a.score>b.score){
-                    return -1;
-                  }else if (a.score<b.score){
-                    return 1;
-                  }else{
-                    if(a.time<b.time){
-                      return -1;
-                    }else{
-                      return 1;
-                    }
-                  }
-              
-                })
-      );
+        
+        if(a.score>b.score){
+          return -1;
+        }else if (a.score<b.score){
+          return 1;
+        }else{
+          if(a.time<b.time){
+            return -1;
+          }else{
+            return 1;
+          }
+        }
+    
+      })
+    );
   });
 
   },[])

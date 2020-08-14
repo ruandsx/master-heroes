@@ -89,6 +89,8 @@ const Home = () => {
             return (
               <HeroCard key={hero.id} id={hero.id} image={hero.image.url} name={hero.name} options={hero.cardOptions} alignment={hero.biography.alignment}/> 
             )
+            return false;
+
           })
           : <Loader inline='centered' />}
 
