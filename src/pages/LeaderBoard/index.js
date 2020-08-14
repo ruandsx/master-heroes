@@ -4,7 +4,7 @@ import React , { useState, useEffect } from 'react';
 import {Container, Grid, Header, Icon, Table, Image, Button, Segment, Loader} from 'semantic-ui-react';
 
 //utils
-import { isAuthenticated, logout } from '../../utils/Utils'
+import { logout } from '../../utils/Utils'
 
 //services
 import {db} from '../../services/firebase';
